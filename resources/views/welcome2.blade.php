@@ -107,10 +107,10 @@
         </main>
 
         <!-- JAVASCRIPT FILES -->
-        <script src="{{ url('js/jquery.min.js') }}"></script>
-        <script src="{{ url('js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ url('js/countdown.js') }}"></script>
-        <script src="{{ url('js/init.js') }}"></script>
+        <script src="{{ url('js2/jquery.min.js') }}"></script>
+        <script src="{{ url('js2/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ url('js2/countdown.js') }}"></script>
+        <script src="{{ url('js2/init.js') }}"></script>
 
     </body>
 </html>
