@@ -10,12 +10,20 @@
             "dest": "/public/build/"
         },
         {
+            "src": "/videos2/(.*)",
+            "dest": "/public/videos2/"
+        },
+        {
             "src": "/css/(.*)",
             "dest": "/public/css/"
         },
         {
             "src": "/css2/(.*)",
             "dest": "/public/css2/"
+        },
+        {
+            "src": "/fonts2/(.*)",
+            "dest": "/public/fonts2/"
         },
         {
             "src": "/images/(.*)",
@@ -40,14 +48,6 @@
         {
             "src": "/fotouser/(.*)",
             "dest": "/public/fotouser/"
-        },
-        {
-            "src": "/fonts2/(.*)",
-            "dest": "/public/fonts2/"
-        },
-        {
-            "src": "/videos2/(.*)",
-            "dest": "/public/videos2/"
         },
         {
             "src": "/vendors/(.*)",
