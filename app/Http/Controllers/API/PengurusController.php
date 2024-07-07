@@ -3,24 +3,24 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Anggota;
+use App\Models\Pengurus;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class AnggotaController extends Controller
+class PengurusController extends Controller
 {
     public function index()
     {
-        $anggota = Anggota::all();
-        if ($anggota->isEmpty()) {
-            $response['message'] = 'Tidak ada Anggota yang ditemukan.';
+        $pengurus = Pengurus::all();
+        if ($pengurus->isEmpty()) {
+            $response['message'] = 'Tidak ada Pengurus yang ditemukan.';
             $response['success'] = false;
             return response()->json($response, Response::HTTP_NOT_FOUND);
         }
 
         $response['success'] = true;
-        $response['message'] = 'Anggota ditemukan.';
-        $response['data'] = $anggota;
+        $response['message'] = 'Pengurus ditemukan.';
+        $response['data'] = $pengurus;
         return response()->json($response, Response::HTTP_OK);
         // atau
         // return response()->json($response, 200);
@@ -30,7 +30,7 @@ class AnggotaController extends Controller
     {
         $val = $request->validate([
             'url_foto'=> 'required|url',
-            'npm'=> 'required|max:10',
+            'nip'=> 'required|max:10',
             'nama'=> 'required|max:50',
             'email'=> 'required|max:50',
             'alamat'=> 'required|max:50',
@@ -38,10 +38,10 @@ class AnggotaController extends Controller
             'tanggal_lahir'=> 'required'
         ]);
 
-        $anggota = Anggota::create($val);
-        if($anggota){
+        $pengurus = Pengurus::create($val);
+        if($pengurus){
             $response['success'] = true;
-            $response['message'] = 'Anggota berhasil ditambahkan.';
+            $response['message'] = 'Pengurus berhasil ditambahkan.';
             return response()->json($response, Response::HTTP_CREATED);
         }
     }
@@ -50,7 +50,7 @@ class AnggotaController extends Controller
     {
         $val = $request->validate([
             'url_foto'=> 'required|url',
-            'npm'=> 'required|max:10',
+            'nip'=> 'required|max:10',
             'nama'=> 'required|max:50',
             'email'=> 'required|max:50',
             'alamat'=> 'required|max:50',
@@ -58,23 +58,23 @@ class AnggotaController extends Controller
             'tanggal_lahir'=> 'required'
         ]);
 
-        Anggota::where('id', $id)->update($val);
+        Pengurus::where('id', $id)->update($val);
         $response['success'] = true;
-        $response['message'] = 'Anggota berhasil diperbarui.';
+        $response['message'] = 'Pengurus berhasil diperbarui.';
         return response()->json($response, Response::HTTP_OK);
     }
 
     public function destroy($id)
     {
-        $anggota = Anggota::where('id', $id);
-        if(count($anggota->get())){
-            $anggota->delete();
+        $pengurus = Pengurus::where('id', $id);
+        if(count($pengurus->get())){
+            $pengurus->delete();
             $response['success'] = true;
-            $response['message'] = 'Anggota berhasil dihapus.';
+            $response['message'] = 'Pengurus berhasil dihapus.';
             return response()->json($response, Response::HTTP_OK);
         } else {
             $response['success'] = false;
-            $response['message'] = 'Anggota tidak ditemukan.';
+            $response['message'] = 'Pengurus tidak ditemukan.';
             return response()->json($response, Response::HTTP_NOT_FOUND);
         } 
     }

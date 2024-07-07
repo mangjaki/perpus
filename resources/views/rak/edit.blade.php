@@ -21,23 +21,13 @@
             @enderror
           </div>
           <div class="form-group">
-            <label for="buku_id">Rak Buku</label>
-            <select name="buku_id" id="buku_id" value="{{old('buku_id') ? old('buku_id'): $rakbuku['buku_id'] }}" class="form-control">
-                @foreach ($buku as $items)
-                    <option value="{{$items['id']}}">
-                        {{$items['genre']}}
-                    </option>
-                @endforeach
-            </select>
-          </div>
-          <div class="form-group">
             <label for="tingkat">Tingkat Rak</label>
             <select type="text" class="form-control" id="tingkat" name="tingkat" value="{{old('tingkat') ? old('tingkat'): $rakbuku['tingkat'] }}" placeholder="Masukan Tingat Rak">
               <option value="Baris 1"> Baris 1</option>
               <option value="Baris 2"> Baris 2</option>
               <option value="Baris 3"> Baris 3</option>
             </select>
-            @error('kode_rak')
+            @error('tingkat')
                 <span class="text-danger">{{$message}}</span>
             @enderror
           </div>

@@ -68,9 +68,9 @@ class BukuController extends Controller
      */
     public function update(Request $request, Buku $buku)
     {
-        if ($request->user()->cannot('edit', Buku::class)){
-            abort(403, 'Kamu tidak memiliki Akses');
-        }
+        // if ($request->user()->cannot('edit', Buku::class)){
+        //     abort(403, 'Kamu tidak memiliki Akses');
+        // }
         
         if($request->url_foto){
             $val = $request->validate([

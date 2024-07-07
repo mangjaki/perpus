@@ -9,10 +9,7 @@ class Rakbuku extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'kode_rak','buku_id', 'tingkat'
+        'kode_rak', 'tingkat'
     ];
 
-    public function buku(){
-        return $this->belongsTo(Buku::class, 'buku_id');
-    }
 }

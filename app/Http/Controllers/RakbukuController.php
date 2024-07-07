@@ -22,8 +22,7 @@ class RakbukuController extends Controller
      */
     public function create()
     {
-        $buku = Buku::all();
-        return view('rak.create')->with('buku', $buku);
+        return view('rak.create');
     }
 
     /**
@@ -36,7 +35,6 @@ class RakbukuController extends Controller
         }
         $val = $request->validate([
             'kode_rak'=> 'required|max:50',
-            'buku_id'=> 'required',
             'tingkat'=> 'required|max:50'
         ]);
 
@@ -58,8 +56,7 @@ class RakbukuController extends Controller
     public function edit( $rakbuku)
     {
         $rakbuku = Rakbuku::find($rakbuku);
-        $buku = Buku::all();
-        return view('rak.edit')->with('buku', $buku)->with('rakbuku', $rakbuku);
+        return view('rak.edit')->with('rakbuku', $rakbuku);
     }
 
     /**
@@ -67,9 +64,11 @@ class RakbukuController extends Controller
      */
     public function update(Request $request,$rakbuku)
     {
+        // if ($request->user()->cannot('edit', Rakbuku::class)){
+        //     abort(403);
+        // }
         $val = $request->validate([
             'kode_rak'=> 'required|max:50',
-            'buku_id'=> 'required',
             'tingkat'=> 'required|max:50'
         ]);
         $rakbuku = Rakbuku::find($rakbuku);

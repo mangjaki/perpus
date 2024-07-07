@@ -18,7 +18,6 @@
             <thead>
               <tr>
                 <th class="text-center">Kode Rak</th>
-                <th class="text-center">Rak Buku</th>
                 <th class="text-center">Rak Tingkat</th>
                 <th class="text-center">Aksi</th>
               </tr>
@@ -27,7 +26,6 @@
               @foreach ($rakbuku as $item)
               <tr>
                 <td class="text-center">{{ $item['kode_rak'] }}</td>
-                <td class="text-center">{{ $item['buku']['genre'] }}</td>
                 <td class="text-center">{{ $item['tingkat'] }}</td>
                 <td class="text-center">
                   @can('delete', $item)

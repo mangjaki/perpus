@@ -20,16 +20,6 @@
             @enderror
           </div>
           <div class="form-group">
-            <label for="buku_id">Rak Buku</label>
-            <select name="buku_id" id="buku_id" class="form-control">
-                @foreach ($buku as $items)
-                    <option value="{{$items['id']}}">
-                        {{$items['genre']}}
-                    </option>
-                @endforeach
-            </select>
-          </div>
-          <div class="form-group">
             <label for="tingkat">Tingkat Rak</label>
             <select type="text" class="form-control" id="tingkat" name="tingkat" placeholder="Masukan Tingat Rak">
               <option value="Baris 1"> Baris 1</option>

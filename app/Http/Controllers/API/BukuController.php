@@ -64,7 +64,7 @@ class BukuController extends Controller
 
     public function destroy($id)
     {
-        $buku = BukuController::where('id', $id);
+        $buku = Buku::where('id', $id);
         if(count($buku->get())){
             $buku->delete();
             $response['success'] = true;

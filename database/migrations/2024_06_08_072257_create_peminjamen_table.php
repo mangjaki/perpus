@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('anggota_id')->constrained();
             $table->foreignId('buku_id')->constrained();
-            $table->foreignId('rak_id')->constrained();
             $table->foreignId('pengurus_id')->constrained();
             $table->date('tanggal_pinjam');
             $table->date('tanggal_kembali');

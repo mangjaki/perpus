@@ -33,16 +33,6 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="rak_id">Rak Buku</label>
-                    <select name="rak_id" id="rak_id" class="form-control">
-                        @foreach ($rakbuku as $items)
-                            <option value="{{$items['id']}}">
-                                {{$items['kode_rak']}}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group">
                     <label for="pengurus_id">Pengurus Peminjaman</label>
                     <select name="pengurus_id" id="pengurus_id" class="form-control">
                         @foreach ($pengurus as $items)

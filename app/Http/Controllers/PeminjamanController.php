@@ -26,11 +26,10 @@ class PeminjamanController extends Controller
      */
     public function create()
     {
-        $rakbuku = Rakbuku::all();
         $anggota = Anggota::all();
         $buku = Buku::all();
         $pengurus = Pengurus::all();
-        return view('peminjaman.create')->with('anggota', $anggota)->with('buku', $buku)->with('rakbuku', $rakbuku)->with('pengurus', $pengurus);
+        return view('peminjaman.create')->with('anggota', $anggota)->with('buku', $buku)->with('pengurus', $pengurus);
     }
 
     /**
@@ -44,7 +43,6 @@ class PeminjamanController extends Controller
         $val = $request->validate([
             'buku_id'=> 'required|exists:bukus,id',
             'anggota_id'=> 'required|exists:anggotas,id',
-            'rak_id'=> 'required|exists:rakbukus,id',
             'pengurus_id'=> 'nullable',
             'tanggal_pinjam'=> 'required|date',
             'tanggal_kembali'=> 'nullable|date'
@@ -74,11 +72,10 @@ class PeminjamanController extends Controller
      */
     public function edit(Peminjaman $peminjaman)
     {
-        $rakbuku = Rakbuku::all();
         $anggota = Anggota::all();
         $buku = Buku::all();
         $pengurus = Pengurus::all();
-        return view('peminjaman.edit')->with('anggota', $anggota)->with('buku', $buku)->with('rakbuku', $rakbuku)->with('pengurus', $pengurus)->with('peminjaman', $peminjaman);
+        return view('peminjaman.edit')->with('anggota', $anggota)->with('buku', $buku)->with('pengurus', $pengurus)->with('peminjaman', $peminjaman);
     }
 
     /**
@@ -86,10 +83,12 @@ class PeminjamanController extends Controller
      */
     public function update(Request $request, Peminjaman $peminjaman)
     {
+        // if ($request->user()->cannot('edit', Peminjaman::class)){
+        //     abort(403);
+        // }
         $val = $request->validate([
             'buku_id'=> 'required',
             'anggota_id'=> 'required',
-            'rak_id'=> 'required',
             'pengurus_id'=> 'required',
             'tanggal_pinjam'=> 'required|date',
             'tanggal_kembali'=> 'nullable|date'

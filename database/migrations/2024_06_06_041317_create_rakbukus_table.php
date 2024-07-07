@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('rakbukus', function (Blueprint $table) {
             $table->id();
             $table->string('kode_rak');
-            $table->foreignId('buku_id')->constrained();
             $table->string('tingkat');
             $table->timestamps();
         });

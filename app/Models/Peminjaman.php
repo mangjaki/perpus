@@ -9,7 +9,7 @@ class Peminjaman extends Model
 {
     use HasFactory;
     protected $fillable =[
-        'anggota_id','buku_id','rak_id','pengurus_id','tanggal_pinjam','tanggal_kembali'
+        'anggota_id','buku_id','pengurus_id','tanggal_pinjam','tanggal_kembali'
     ];
 
     public function anggota(){
@@ -20,8 +20,5 @@ class Peminjaman extends Model
     }
     public function pengurus(){
         return $this->belongsTo(Pengurus::class, 'pengurus_id','id');
-    }
-    public function rakbuku(){
-        return $this->belongsTo(Rakbuku::class, 'rak_id','id');
     }
 }

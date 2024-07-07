@@ -24,7 +24,6 @@
               <tr>
                 <th class="text-center">Nama Anggota</th>
                 <th class="text-center">Judul Buku</th>
-                <th class="text-center">Rak Buku</th>
                 <th class="text-center">Nama Pengurus</th>
                 <th class="text-center">Tanggal Peminjaman</th>
                 <th class="text-center">Tanggal Pengembalian</th>
@@ -37,7 +36,6 @@
               <tr>
                 <td class="text-center">{{ $item['anggota']['nama'] }}</td>
                 <td class="text-center">{{ $item['buku']['judul'] }}</td>
-                <td class="text-center">{{ $item['rakbuku']['kode_rak'] }}</td>
                 <td class="text-center">{{ $item['pengurus']['nama'] }}</td>
                 <td class="text-center">{{ $item['tanggal_pinjam'] }}</td>
                 <td class="text-center">{{ $item['tanggal_kembali'] }}</td>
