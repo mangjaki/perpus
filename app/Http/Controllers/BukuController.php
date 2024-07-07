@@ -40,6 +40,7 @@ class BukuController extends Controller
             'judul'=> 'required|max:50',
             'genre'=> 'required|max:50',
             'penerbit'=> 'required|max:50',
+            'stok' => 'required|integer|min:0',
             'tahun_terbit'=> 'required|integer|min:1900|max:' . date('Y')
         ]);
         Buku::create($val);
@@ -67,15 +68,17 @@ class BukuController extends Controller
      */
     public function update(Request $request, Buku $buku)
     {
-        // if ($request->user()->cannot('edit', Buku::class)){
-        //     abort(403, 'Kamu tidak memiliki Akses');
-        // }
+        if ($request->user()->cannot('edit', Buku::class)){
+            abort(403, 'Kamu tidak memiliki Akses');
+        }
+        
         if($request->url_foto){
             $val = $request->validate([
                 'url_foto'=> 'required|url',
                 'judul'=> 'required|max:50',
                 'genre'=> 'required|max:50',
                 'penerbit'=> 'required|max:50',
+                'stok' => 'required|integer|min:0',
                 'tahun_terbit'=> 'required|integer|min:1900|max:' . date('Y')
         ]);
 
@@ -85,6 +88,7 @@ class BukuController extends Controller
                 'judul'=> 'required|max:50',
                 'genre'=> 'required|max:50',
                 'penerbit'=> 'required|max:50',
+                'stok' => 'required|integer|min:0',
                 'tahun_terbit'=> 'required|integer|min:1900|max:' . date('Y')
         ]);
         }

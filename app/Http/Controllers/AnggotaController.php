@@ -70,9 +70,9 @@ class AnggotaController extends Controller
      */
     public function update(Request $request, $anggota)
     {
-        // if ($request->user()->cannot('edit', Anggota::class)){
-        //     abort(403);
-        // }
+        if ($request->user()->cannot('update', Anggota::class)){
+            abort(403);
+        }
         if ($request->url_foto) {
             $val = $request->validate([
                 'url_foto'=> 'required|url',

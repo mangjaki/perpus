@@ -32,6 +32,7 @@
                             <p class="card-text text-center">{{ $item['genre'] }}</p>
                             <p class="card-text text-center">{{ $item['penerbit'] }}</p>
                             <p class="card-text text-center">{{ $item['tahun_terbit'] }}</p>
+                            <p class="card-text text-center"><i>Stok: </i>{{ $item['stok'] }}</p>
                             <div class="text-center p-1">
                               @can('delete', $item)
                                 <form action="{{route('buku.destroy', $item["id"])}}" method="post">

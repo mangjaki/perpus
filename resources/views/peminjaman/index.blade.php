@@ -7,6 +7,11 @@
     <div class="card">
       <div class="card-body">
         <h2 class="card-title text-center">PEMINJAMAN</h2>
+        @if (session('success'))
+          <div class="alert alert-success">
+              {{ session('success') }}
+          </div>
+        @endif
         <p class="card-description text-center">
           > Table List Peminjaman <
         </p>
@@ -23,6 +28,7 @@
                 <th class="text-center">Nama Pengurus</th>
                 <th class="text-center">Tanggal Peminjaman</th>
                 <th class="text-center">Tanggal Pengembalian</th>
+                <th class="text-center">Status</th>
                 <th class="text-center">Aksi</th>
               </tr>
             </thead>
@@ -35,6 +41,13 @@
                 <td class="text-center">{{ $item['pengurus']['nama'] }}</td>
                 <td class="text-center">{{ $item['tanggal_pinjam'] }}</td>
                 <td class="text-center">{{ $item['tanggal_kembali'] }}</td>
+                <td class="text-center">
+                  @if ($item->is_late)
+                      <span class="badge badge-danger">Terlambat</span>
+                  @else
+                      <span class="badge badge-success">Tepat Waktu</span>
+                  @endif
+              </td>
                 <td class="text-center">
                   @can('delete', $item)
                     <form action="{{route('peminjaman.destroy', $item["id"])}}" method="post">

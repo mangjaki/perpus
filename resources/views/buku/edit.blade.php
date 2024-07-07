@@ -42,6 +42,13 @@
                 @enderror
             </div>
             <div class="form-group">
+                <label for="stok">Stok Buku</label>
+                <input type="number" class="form-control" id="stok" name="stok" value="{{old('stok') ? old('stok'): $buku['stok'] }}" placeholder="Masukan Stok Buku">
+                @error('stok')
+                    <span class="text-danger">{{$message}}</span>
+                @enderror
+            </div>
+            <div class="form-group">
                 <label for="url_foto">Foto</label>
                 <input type="url" class="form-control" name="url_foto">
                 @error('url_foto')

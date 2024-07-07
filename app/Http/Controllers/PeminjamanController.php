@@ -42,14 +42,22 @@ class PeminjamanController extends Controller
             abort(403);
         }
         $val = $request->validate([
-            'buku_id'=> 'nullable',
-            'anggota_id'=> 'nullable',
-            'rak_id'=> 'nullable',
+            'buku_id'=> 'required|exists:bukus,id',
+            'anggota_id'=> 'required|exists:anggotas,id',
+            'rak_id'=> 'required|exists:rakbukus,id',
             'pengurus_id'=> 'nullable',
             'tanggal_pinjam'=> 'required|date',
             'tanggal_kembali'=> 'nullable|date'
         ]);
+
+        $buku = Buku::find($val['buku_id']);
+
+        if ($buku->stok < 1) {
+            return redirect()->back()->with('error', 'Stok buku tidak mencukupi.');
+        }
+
         Peminjaman::create($val);
+        $buku->decrement('stok');   
         return redirect()->route('peminjaman.index')->with('success','Peminjaman ', $val['buku_id'].' Berhasil disimpan');
     }
 
@@ -87,6 +95,19 @@ class PeminjamanController extends Controller
             'tanggal_kembali'=> 'nullable|date'
         ]);
 
+        // Jika buku diganti, kembalikan stok buku lama dan kurangi stok buku baru
+        if ($peminjaman->buku_id != $request->buku_id) {
+            $bukuLama = Buku::find($peminjaman->buku_id);
+            if ($bukuLama) {
+                $bukuLama->increment('stok');
+            }
+
+            $bukuBaru = Buku::find($request->buku_id);
+            if ($bukuBaru) {
+                $bukuBaru->decrement('stok');
+            }
+        }
+
         Peminjaman::where('id', $peminjaman['id'])->update($val);
         return redirect()->route('peminjaman.index')->with('success','Peminjaman ', $val['buku_id'].' Berhasil di Edit');
     }
@@ -97,6 +118,10 @@ class PeminjamanController extends Controller
     public function destroy($peminjaman)
     {
         $peminjaman = Peminjaman::find($peminjaman);
+        $buku = Buku::find($peminjaman->buku_id);
+        if ($buku) {
+            $buku->increment('stok');
+        }
         $peminjaman->delete();
         return redirect()->route('peminjaman.index')->with('success','Data Berhasil di Hapus!');
     }

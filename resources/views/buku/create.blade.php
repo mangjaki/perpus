@@ -14,35 +14,42 @@
           @csrf
           <div class="form-group">
             <label for="judul">Judul Buku</label>
-            <input type="text" class="form-control" id="judul" name="judul" placeholder="Masukan Judul Buku">
+            <input type="text" class="form-control" id="judul" name="judul" value="{{ old('judul') }}" placeholder="Masukan Judul Buku">
             @error('judul')
                 <span class="text-danger">{{$message}}</span>
             @enderror
           </div>
           <div class="form-group">
             <label for="genre">Genre Buku</label>
-            <input type="text" class="form-control" id="genre" name="genre" placeholder="Masukan Genre Buku">
+            <input type="text" class="form-control" id="genre" name="genre" value="{{ old('genre') }}" placeholder="Masukan Genre Buku">
             @error('genre')
                 <span class="text-danger">{{$message}}</span>
             @enderror
           </div>
           <div class="form-group">
             <label for="penerbit">Penerbit Buku</label>
-            <input type="text" class="form-control" id="penerbit" name="penerbit" placeholder="Masukan Penerbit Buku">
+            <input type="text" class="form-control" id="penerbit" name="penerbit" value="{{ old('penerbit') }}"  placeholder="Masukan Penerbit Buku">
             @error('penerbit')
                 <span class="text-danger">{{$message}}</span>
             @enderror
           </div>
           <div class="form-group">
             <label for="tahun_terbit">Tahun Terbit</label>
-            <input type="number" class="form-control" id="tahun_terbit" name="tahun_terbit" placeholder="Masukan Tahun Terbit" required min="1900" max="{{ date('Y')}}">
+            <input type="number" class="form-control" id="tahun_terbit" name="tahun_terbit" value="{{ old('tahun_terbit') }}" placeholder="Masukan Tahun Terbit" required min="1900" max="{{ date('Y')}}">
             @error('tahun_terbit')
                 <span class="text-danger">{{$message}}</span>
             @enderror
           </div>
           <div class="form-group">
+            <label for="stok">Stok Buku</label>
+            <input type="number" class="form-control" id="stok" name="stok" value="{{ old('stok') }}" placeholder="Masukan Stok Buku">
+            @error('stok')
+                <span class="text-danger">{{$message}}</span>
+            @enderror
+          </div>
+          <div class="form-group">
             <label for="url_foto">Foto</label>
-            <input type="url" class="form-control" name="url_foto">
+            <input type="url" class="form-control" name="url_foto" value="{{ old('url_foto') }}">
             @error('url_foto')
                 <span class="text-danger">{{$message}}</span>
             @enderror

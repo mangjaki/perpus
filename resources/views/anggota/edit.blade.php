@@ -44,7 +44,7 @@
             <div class="form-group">
                 <label for="tempat_lahir">Tempat Lahir Anggota</label>
                 <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" value="{{old('tempat_lahir') ? old('tempat_lahir'): $anggota['tempat_lahir'] }}" placeholder="Masukan Tempat Lahir Anggota">
-                @error('alamat')
+                @error('tempat_lahir')
                     <span class="text-danger">{{$message}}</span>
                 @enderror
             </div>

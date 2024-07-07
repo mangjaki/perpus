@@ -11,7 +11,7 @@ class BukuPolicy
     /**
      * Determine whether the user can view any models.
      */
-    public function viewAny(User $user): bool
+    public function viewAny(User $user)
     {
         //
     }
@@ -19,7 +19,7 @@ class BukuPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Buku $buku): bool
+    public function view(User $user, Buku $buku)
     {
         //
     }
@@ -51,7 +51,7 @@ class BukuPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Buku $buku): bool
+    public function restore(User $user, Buku $buku)
     {
         //
     }
@@ -59,7 +59,7 @@ class BukuPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Buku $buku): bool
+    public function forceDelete(User $user, Buku $buku)
     {
         //
     }

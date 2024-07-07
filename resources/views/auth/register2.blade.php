@@ -87,7 +87,7 @@
 
                                     <div class="col-lg-12 col-12">
                                         <div class="form-floating p-0">
-                                            <input type="file" name="url_user" id="url_user" class="form-control" placeholder="Foto" required>
+                                            <input type="url" name="url_user" id="url_user" class="form-control" placeholder="Foto" required>
   
                                             <label for="url_user">Foto</label>
                                         </div>   

@@ -30,26 +30,18 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'url_user' => ['required','image','mimes:png,jpg','max:5000'],
+            'url_user' => ['required','url'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
+            'url_user' => $request->url_user,
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-
-        if ($request->hasFile('url_user')) {
-            $file = $request->file('url_user');
-            $ext = $file->getClientOriginalExtension();
-            $filename = $user->name .'.' . $ext; // Menggunakan nama untuk membuat file foto;
-            $file->move(public_path('fotouser'), $filename);
-            $user->url_user = 'fotouser/' . $filename;
-            $user->save();
-        }
 
         event(new Registered($user));
 

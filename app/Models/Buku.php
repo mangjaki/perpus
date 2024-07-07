@@ -9,6 +9,6 @@ class Buku extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'url_foto','judul','genre','penerbit','tahun_terbit'
+        'url_foto','judul','genre','penerbit','tahun_terbit','stok'
     ];
 }

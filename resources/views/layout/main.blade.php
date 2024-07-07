@@ -61,7 +61,7 @@
           </li>
           <li class="nav-item dropdown d-none d-lg-block user-dropdown">
             <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-              <img class="img-xs rounded-circle" src="{{ url(auth()->user()->url_user) }}"> </a>
+              <img class="img-xs" src="{{ url(auth()->user()->url_user) }}"> </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <div class="dropdown-header text-center">
                 <p class="mb-1 mt-3 font-weight-semibold">{{ auth()->user()->name }}</p>
